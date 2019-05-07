@@ -1,6 +1,8 @@
 @Regression 
-Feature: OCD-2023: Monitor that download files on CHPL download resources page are correct and current 
-  Verify download files are recent, to ensure file generation didn't fail at any point.
+Feature: Monitor that download files and definition files on CHPL download resources page are correct and current
+       OCD-2023: Monitor that download files on CHPL download resources page are correct and current 
+       Verify download files are recent, to ensure file generation didn't fail at any point.
+       OCD-2823: Check that definition files exist on overnight checks 
 
   Background: 
     We need to start with an empty download directory, so that we can be sure we're checking the right file for recency. 
@@ -55,3 +57,58 @@ Feature: OCD-2023: Monitor that download files on CHPL download resources page a
       | DEV  | sed      | chpl-sed  |1   |
       | STG  | sed      | chpl-sed  |1   |
       | PROD | sed      | chpl-sed  |1   |
+  
+  Scenario Outline: 
+    At any given time, for a non logged in user, 7 definition files should be available to download
+    Given I am on download the CHPL resources page on "<env>"
+    When I select the definition "<File>", download it from drop-down and I see the "<Downloaded File Name>"
+    And the download file is at least "<size>" "<units>" in size
+    Examples:
+    | env  | File                                       | Downloaded File Name                                  | size| units|
+    | DEV  | 2015 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | DEV  | 2014 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | DEV  | 2011 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | DEV  | 2015 edition summary (csv) Definition File | 2015 Listing CSV Data Dictionary.csv                  |  7  | KB   |
+    | DEV  | 2014 edition summary (csv) Definition File | 2014 Listing CSV Data Dictionary.csv                  |  8  | KB   |
+    | DEV  | Surveillance Activity Definition File      | Surveillance and Nonconformity CSV Data Dictionary.csv|  7  | KB   |
+    | DEV  | Non-Conformities Definition File           | Surveillance and Nonconformity CSV Data Dictionary.csv|  7  | KB   |
+    | STG  | 2015 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | STG  | 2014 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | STG  | 2011 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | STG  | 2015 edition summary (csv) Definition File | 2015 Listing CSV Data Dictionary.csv                  |  7  | KB   |
+    | STG  | 2014 edition summary (csv) Definition File | 2014 Listing CSV Data Dictionary.csv                  |  8  | KB   |
+    | STG  | Surveillance Activity Definition File      | Surveillance and Nonconformity CSV Data Dictionary.csv|  7  | KB   |
+    | STG  | Non-Conformities Definition File           | Surveillance and Nonconformity CSV Data Dictionary.csv|  7  | KB   |
+    | PROD | 2015 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | PROD | 2014 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | PROD | 2011 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | PROD | 2015 edition summary (csv) Definition File | 2015 Listing CSV Data Dictionary.csv                  |  7  | KB   |
+    | PROD | 2014 edition summary (csv) Definition File | 2014 Listing CSV Data Dictionary.csv                  |  8  | KB   |
+    | PROD | Surveillance Activity Definition File      | Surveillance and Nonconformity CSV Data Dictionary.csv|  7  | KB   |
+    | PROD | Non-Conformities Definition File           | Surveillance and Nonconformity CSV Data Dictionary.csv|  7  | KB   |
+    
+  Scenario Outline: 
+    At any given time, for a logged in admin user, 8 definition files should be available to download
+    Given I'm logged in as "ROLE_ADMIN" on "<env>"
+    And I am on download the CHPL resources page on "<env>"
+    When I select the definition "<File>", download it from drop-down and I see the "<Downloaded File Name>"
+    And the download file is at least "<size>" "<units>" in size
+    Examples:
+    | env  | File                                       | Downloaded File Name                                  | size| units|
+    | DEV  | 2015 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | DEV  | 2014 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | DEV  | 2011 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | DEV  | 2015 edition summary (csv) Definition File | 2015 Listing CSV Data Dictionary.csv                  |  7  | KB   |
+    | DEV  | 2014 edition summary (csv) Definition File | 2014 Listing CSV Data Dictionary.csv                  |  8  | KB   |
+    | DEV  | Surveillance Activity Definition File      | Surveillance and Nonconformity CSV Data Dictionary.csv|  7  | KB   |
+    | DEV  | Surveillance (Basic) Definition File       | Surveillance (basic) CSV Data Dictionary.csv          |  5  | KB   |
+    | DEV  | Non-Conformities Definition File           | Surveillance and Nonconformity CSV Data Dictionary.csv|  7  | KB   |
+    | STG  | 2015 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | STG  | 2014 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | STG  | 2011 edition products (xml) Definition File| listingSchema.xsd                                     |  83 | KB   |
+    | STG  | 2015 edition summary (csv) Definition File | 2015 Listing CSV Data Dictionary.csv                  |  7  | KB   |
+    | STG  | 2014 edition summary (csv) Definition File | 2014 Listing CSV Data Dictionary.csv                  |  8  | KB   |
+    | STG  | Surveillance Activity Definition File      | Surveillance and Nonconformity CSV Data Dictionary.csv|  7  | KB   |
+    | STG  | Surveillance (Basic) Definition File       | Surveillance (basic) CSV Data Dictionary.csv          |  5  | KB   |
+    | STG  | Non-Conformities Definition File           | Surveillance and Nonconformity CSV Data Dictionary.csv|  7  | KB   |
+    

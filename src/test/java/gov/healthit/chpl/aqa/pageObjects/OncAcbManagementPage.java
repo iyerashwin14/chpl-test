@@ -73,5 +73,13 @@ public final class OncAcbManagementPage extends BasePage {
     public static WebElement oncACBNameOnEditForm(final WebDriver driver) {
         return driver.findElement(By.id("acb-name"));
     }
+
+    public static WebElement organizationsToggleNavLink(final WebDriver driver) {
+        return driver.findElement(By.xpath("//*[@id=\"organizations-toggle\"]"));
+    }
+
+    public static WebElement organizationsDropdownLinkToLoadACBManagementPage(final WebDriver driver) {
+        return driver.findElement(By.xpath("//*[@id=\"organizations-dropdown-menu\"]/li[4]/a"));
+    }
 }
 

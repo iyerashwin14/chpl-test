@@ -80,5 +80,29 @@ public class LoginSteps extends Base {
         LoginPage.loginButton(getDriver()).click();
         getWait().until(ExpectedConditions.visibilityOf(LoginPage.logoutButton(getDriver())));
     }
-}
 
+    /**
+     * Log the user in as given ROLE in a given environment.
+     * @param role as ROLE_ADMIN, ROLE_ONC or ROLE_ACB
+     * @param tEnv test environment in which tests will be run
+     */
+    @Given("^I'm logged in as \"([^\"]*)\" on \"([^\"]*)\"$")
+    public void logInAsRoleOnGivenEnv(final String role, final String tEnv) {
+
+        String username = roleAdminUsername;
+        String password = roleAdminPassword;
+
+        this.getEnvUrl(tEnv);
+        getDriver().get(getEnvUrl(tEnv) + "#/search");
+        WebDriverWait wait = new WebDriverWait(getDriver(), TIMEOUT);
+
+        wait.until(ExpectedConditions.visibilityOf(LoginPage.loginLogoutPopUp(getDriver())));
+        LoginPage.loginLogoutPopUp(getDriver()).click();
+
+        wait.until(ExpectedConditions.visibilityOf(LoginPage.username(getDriver())));
+        LoginPage.username(getDriver()).sendKeys(username);
+        LoginPage.password(getDriver()).sendKeys(password);
+        LoginPage.loginButton(getDriver()).click();
+        getWait().until(ExpectedConditions.visibilityOf(LoginPage.logoutButton(getDriver())));
+    }
+}

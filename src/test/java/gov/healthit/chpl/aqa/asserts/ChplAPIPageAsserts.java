@@ -85,6 +85,7 @@ public class ChplAPIPageAsserts extends Base {
         File file = new File(getClass().getClassLoader().getResource(jsonFile).getFile());
         FileReader reader = new FileReader(file.getPath());
         Object notesObj = jsonParser.parse(reader);
+        reader.close();
         apiImplNoteList = (JSONArray) notesObj;
         for (Object object : apiImplNoteList) {
             failedCase = false;

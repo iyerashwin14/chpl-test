@@ -125,6 +125,7 @@ public class ChplSearchPageAsserts extends Base {
                 }
             }
             assertTrue(foundChpId, "chpl id [ " + chplId + " ] not found");
+            dataScanner.close();
             scanner.close();
         }
     }

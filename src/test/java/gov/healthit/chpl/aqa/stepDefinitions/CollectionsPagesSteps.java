@@ -1,7 +1,5 @@
 package gov.healthit.chpl.aqa.stepDefinitions;
 
-import static org.testng.Assert.assertTrue;
-
 import java.io.FileNotFoundException;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import gov.healthit.chpl.aqa.pageObjects.CollectionsPages;
 
@@ -37,16 +34,6 @@ public class CollectionsPagesSteps extends Base {
         getDriver().get(getEnvUrl(tEnv) + "#/collections/" + pageName);
         WebDriverWait wait = new WebDriverWait(getDriver(), TIMEOUT);
         wait.until(ExpectedConditions.visibilityOf(CollectionsPages.mainContent(getDriver())));
-    }
-
-    /**
-     * Assert updated CMS FAQ link is as expected.
-     * @param cmsfaqLink link to FAQs on cms.gov site
-     */
-    @Then("^the CMS FAQ link should point to updated link: \"([^\"]*)\"$")
-    public void verifyCMSFAQLink(final String cmsfaqLink) {
-        String link = CollectionsPages.cmsFaqLink(getDriver()).getAttribute("href");
-        assertTrue(link.contains(cmsfaqLink), "Expect " + cmsfaqLink + " to be found in " + link);
     }
 
     /**

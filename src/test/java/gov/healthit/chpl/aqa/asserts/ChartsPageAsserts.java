@@ -1,6 +1,7 @@
 package gov.healthit.chpl.aqa.asserts;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.WebDriver;
 
@@ -25,5 +26,15 @@ public class ChartsPageAsserts extends Base {
         String actualURL = ChartsPage.chartsHealthITFeedback(driver).getAttribute("href");
         assertEquals(actualText, textName);
         assertEquals(actualURL, urlLink);
+    }
+
+    /**
+     * Assert text on charts page.
+     * @param chartsText is info text displayed on charts page
+     */
+    @Then("^I see text \"([^\"]*)\" on charts page$")
+    public void verifyTextOnChartsPage(final String chartsText) {
+        String actualString = ChartsPage.chartsInfoText(getDriver()).getText();
+        assertTrue(actualString.contains(chartsText), "Expect " + chartsText + " to be found in " + actualString);
     }
 }

@@ -1,6 +1,6 @@
 package gov.healthit.chpl.aqa.stepDefinitions;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.WebDriver;
 

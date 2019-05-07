@@ -11,6 +11,14 @@ public final class DpManagementPage {
 
     private DpManagementPage() {}
 
+    public static WebElement administrationNavLink(final WebDriver driver) {
+        return driver.findElement(By.id("administration-toggle"));
+    }
+
+    public static WebElement administrationUploadNavLink(final WebDriver driver) {
+        return driver.findElement(By.linkText("Upload"));
+    }
+
     /**
      * Returns choose file button for new listing upload.
      * @param driver WebDriver

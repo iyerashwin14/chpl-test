@@ -21,6 +21,10 @@ public final class CollectionsPages {
         return element;
     }
 
+    public static WebElement topInfoTextOnCollectionsPages(final WebDriver driver) {
+        return driver.findElement(By.xpath("//*[@id=\"main-content\"]/div[1]/div/ng-transclude/ai-body-text/p[2]"));
+    }
+
     /**
      * Returns element holding main content.
      * @param driver WebDriver

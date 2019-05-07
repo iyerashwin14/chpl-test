@@ -19,5 +19,9 @@ public final class ChartsPage extends BasePage {
     public static WebElement chartsHealthITFeedback(final WebDriver driver) {
         return driver.findElement(By.xpath("//a[contains(text(),'Health IT Feedback Form')]"));
     }
+
+    public static WebElement chartsInfoText(final WebDriver driver) {
+        return driver.findElement(By.xpath("//*[@id=\"main-content\"]/div[1]/div/p"));
+    }
 }
 

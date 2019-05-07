@@ -353,4 +353,19 @@ public class ChplDownloadSteps extends Base {
 
         return items;
     }
+
+    /**
+     * Select a file from definition file drop down and download the file.
+     * @param fileName expected name of the file in drop-down list
+     * @param downloadedFileName expected downloaded file name
+     * @throws FileNotFoundException if the expected file not found
+     */
+    @When("^I select the definition \"([^\"]*)\", download it from drop-down and I see the \"([^\"]*)\"$")
+    public void selectAndDownloadDefinitionFileFromDropdown(final String fileName, final String downloadedFileName) throws FileNotFoundException {
+        WebElement link = ChplDownloadPage.selectFilefromDefinitionDropdown(getDriver(), fileName);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", link);
+        ChplDownloadPage.downloadDefinitionButton(getDriver()).click();
+        super.checkIfFileIsDownloaded(downloadedFileName);
+    }
+
 }

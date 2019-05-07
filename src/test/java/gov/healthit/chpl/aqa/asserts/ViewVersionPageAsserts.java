@@ -1,7 +1,7 @@
 package gov.healthit.chpl.aqa.asserts;
 
-import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -30,8 +30,7 @@ public class ViewVersionPageAsserts extends Base {
      */
     @Then("^I see edit link for version \"(.*)\"$")
     public void iSeeEditLinkToEditTheVersion(final String versionId) {
-        ViewVersionPage.editVersionLink(getDriver(), versionId).isDisplayed();
-        assertTrue(true);
+        assertTrue(ViewVersionPage.editVersionLink(getDriver(), versionId).isDisplayed());
     }
 
     /**
@@ -40,8 +39,7 @@ public class ViewVersionPageAsserts extends Base {
      */
     @Then("^I see merge link for version \"(.*)\"$")
     public void iSeeMergeLinkToMergeTheVersion(final String versionId) {
-        ViewVersionPage.mergeVersionLink(getDriver(), versionId).isDisplayed();
-        assertTrue(true);
+        assertTrue(ViewVersionPage.mergeVersionLink(getDriver(), versionId).isDisplayed());
     }
 
     /**

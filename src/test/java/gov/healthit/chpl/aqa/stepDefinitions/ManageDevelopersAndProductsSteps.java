@@ -65,7 +65,8 @@ public class ManageDevelopersAndProductsSteps extends Base {
      */
     @And("^I navigate to Manage Surveillance Activity section$")
     public void loadManageSurveillanceActivityPage() {
-        DpManagementPage.dpManagementLink(getDriver()).click();
+        DpManagementPage.administrationNavLink(getDriver()).click();
+        DpManagementPage.administrationUploadNavLink(getDriver()).click();
         DpManagementPage.manageSurveillanceActivityLink(getDriver()).click();
     }
 
@@ -101,8 +102,8 @@ public class ManageDevelopersAndProductsSteps extends Base {
      */
     @And("^I am on Upload Products & Surveillance page$")
     public void loadUploadCertifiedProductsPage() {
-        DpManagementPage.dpManagementLink(getDriver()).click();
-        DpManagementPage.dpManagementUploadProductsSurveillance(getDriver()).click();
+        DpManagementPage.administrationNavLink(getDriver()).click();
+        DpManagementPage.administrationUploadNavLink(getDriver()).click();
     }
 
     /**

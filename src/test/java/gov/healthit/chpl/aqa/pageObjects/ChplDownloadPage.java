@@ -118,4 +118,10 @@ public final class ChplDownloadPage {
         selectDropdown.selectByVisibleText(fileName);
         return driver.findElement(By.id("downloadSelect"));
     }
+
+    public static WebElement selectFilefromDefinitionDropdown(final WebDriver driver, final String fileName) {
+        Select selectDropdown = new Select(driver.findElement(By.id("definitionSelect")));
+        selectDropdown.selectByVisibleText(fileName);
+        return driver.findElement(By.id("definitionSelect"));
+    }
 }
