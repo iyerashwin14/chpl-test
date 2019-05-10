@@ -1,4 +1,5 @@
 @Regression 
+@downloadFiles
 Feature: Monitor that download files and definition files on CHPL download resources page are correct and current
        OCD-2023: Monitor that download files on CHPL download resources page are correct and current 
        Verify download files are recent, to ensure file generation didn't fail at any point.

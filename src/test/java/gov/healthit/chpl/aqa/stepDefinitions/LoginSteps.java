@@ -4,7 +4,6 @@ import static org.testng.Assert.assertTrue;
 
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -69,16 +68,18 @@ public class LoginSteps extends Base {
             password = roleAcbPassword;
         }
         getDriver().get(getUrl() + "#/search");
-        WebDriverWait wait = new WebDriverWait(getDriver(), TIMEOUT);
         //pop up the login/out section
-        wait.until(ExpectedConditions.visibilityOf(LoginPage.loginLogoutPopUp(getDriver())));
+        getWait().until(ExpectedConditions.visibilityOf(LoginPage.loginLogoutPopUp(getDriver())));
         LoginPage.loginLogoutPopUp(getDriver()).click();
         //when it's popped up we can see the username
-        wait.until(ExpectedConditions.visibilityOf(LoginPage.username(getDriver())));
+        getWait().until(ExpectedConditions.visibilityOf(LoginPage.username(getDriver())));
         LoginPage.username(getDriver()).sendKeys(username);
         LoginPage.password(getDriver()).sendKeys(password);
         LoginPage.loginButton(getDriver()).click();
         getWait().until(ExpectedConditions.visibilityOf(LoginPage.logoutButton(getDriver())));
+        //minimize the pop up of login/out section
+        getWait().until(ExpectedConditions.visibilityOf(LoginPage.loginLogoutPopUp(getDriver())));
+        LoginPage.loginLogoutPopUp(getDriver()).click();
     }
 
     /**
@@ -94,12 +95,11 @@ public class LoginSteps extends Base {
 
         this.getEnvUrl(tEnv);
         getDriver().get(getEnvUrl(tEnv) + "#/search");
-        WebDriverWait wait = new WebDriverWait(getDriver(), TIMEOUT);
 
-        wait.until(ExpectedConditions.visibilityOf(LoginPage.loginLogoutPopUp(getDriver())));
+        getWait().until(ExpectedConditions.visibilityOf(LoginPage.loginLogoutPopUp(getDriver())));
         LoginPage.loginLogoutPopUp(getDriver()).click();
 
-        wait.until(ExpectedConditions.visibilityOf(LoginPage.username(getDriver())));
+        getWait().until(ExpectedConditions.visibilityOf(LoginPage.username(getDriver())));
         LoginPage.username(getDriver()).sendKeys(username);
         LoginPage.password(getDriver()).sendKeys(password);
         LoginPage.loginButton(getDriver()).click();
