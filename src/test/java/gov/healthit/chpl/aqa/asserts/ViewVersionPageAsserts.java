@@ -60,11 +60,13 @@ public class ViewVersionPageAsserts extends Base {
      * Assert that "Field is required" error message is displayed.
      * @param expectedErrorMessage is the expected error message
      * @param versionId is the product version id passed in page objects
+     * @throws InterruptedException type
      */
     @Then("^I see error message \"(.*)\" for version \"(.*)\"$")
-    public void iSeeFieldIsRequiredError(final String expectedErrorMessage, final String versionId) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), SLEEP_TIME);
-        wait.until(ExpectedConditions.visibilityOf(ViewVersionPage.versionMissingErrorMessage(getDriver(), versionId)));
+    public void iSeeFieldIsRequiredError(final String expectedErrorMessage, final String versionId) throws InterruptedException {
+        Thread.sleep(SLEEP_TIME);
+        //WebDriverWait wait = new WebDriverWait(getDriver(), SLEEP_TIME);
+        //wait.until(ExpectedConditions.visibilityOf(ViewVersionPage.versionMissingErrorMessage(getDriver(), versionId)));
         String actualErrorMessage = ViewVersionPage.versionMissingErrorMessage(getDriver(), versionId).getText();
         assertEquals(actualErrorMessage, expectedErrorMessage);
     }
