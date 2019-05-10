@@ -3,6 +3,7 @@ package gov.healthit.chpl.aqa.stepDefinitions;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -46,6 +47,7 @@ public class ViewProductSteps extends Base {
     public void setProductNameField(final String value) {
         ViewProductPage.productNameField(getDriver()).clear();
         ViewProductPage.productNameField(getDriver()).sendKeys(value);
+        ViewProductPage.productNameField(getDriver()).sendKeys(Keys.TAB);
     }
 
     /**
