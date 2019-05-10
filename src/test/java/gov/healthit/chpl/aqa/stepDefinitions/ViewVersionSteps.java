@@ -1,5 +1,6 @@
 package gov.healthit.chpl.aqa.stepDefinitions;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -54,6 +55,7 @@ public class ViewVersionSteps extends Base {
     public void setVersionField(final String value) {
         ViewVersionPage.editVersionField(getDriver()).clear();
         ViewVersionPage.editVersionField(getDriver()).sendKeys(value);
+        ViewVersionPage.editVersionField(getDriver()).sendKeys(Keys.TAB);
     }
 
 }
