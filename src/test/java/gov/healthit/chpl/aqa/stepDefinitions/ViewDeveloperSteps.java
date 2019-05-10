@@ -54,6 +54,7 @@ public class ViewDeveloperSteps extends Base {
     @And("^I set the developer name field to \"(.*)\"$")
     public void setDeveloperNameField(final String value) {
         ViewDeveloperPage.developerNameField(getDriver()).clear();
+        ViewDeveloperPage.developerNameField(getDriver()).sendKeys(Keys.TAB);
         ViewDeveloperPage.developerNameField(getDriver()).sendKeys(value);
     }
 
