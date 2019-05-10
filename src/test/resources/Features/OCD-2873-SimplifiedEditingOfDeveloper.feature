@@ -38,9 +38,9 @@ Scenario Outline: User logs in as ROLE and edits a developer
     Then I see the edited developer information is recorded and updated on View Developer page
     Examples:
       |ROLE       |developer id|
-      |ROLE_ACB   |378         |
+      |ROLE_ACB   |1903        |
       |ROLE_ADMIN |1854        |
-      |ROLE_ONC   |378         |
+      |ROLE_ONC   |1903        |
 
 Scenario: Verify error message is displayed when the developer name field is left blank
     Given I'm logged in as "ROLE_ONC"

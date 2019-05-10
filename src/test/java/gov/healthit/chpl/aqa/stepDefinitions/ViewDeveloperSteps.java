@@ -1,6 +1,7 @@
 package gov.healthit.chpl.aqa.stepDefinitions;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -59,10 +60,12 @@ public class ViewDeveloperSteps extends Base {
     /**
      * Clear the email field and enter a value.
      * @param value to be entered
+     * @throws InterruptedException 
      **/
     @And("^I set the email field to \"(.*)\"$")
-    public void setEmailField(final String value) {
+    public void setEmailField(final String value) throws InterruptedException {
         ViewDeveloperPage.emailField(getDriver()).clear();
+        ViewDeveloperPage.emailField(getDriver()).sendKeys(Keys.TAB);
         ViewDeveloperPage.emailField(getDriver()).sendKeys(value);
     }
 

@@ -64,10 +64,8 @@ public class ViewVersionPageAsserts extends Base {
      */
     @Then("^I see error message \"(.*)\" for version \"(.*)\"$")
     public void iSeeFieldIsRequiredError(final String expectedErrorMessage, final String versionId) throws InterruptedException {
-        Thread.sleep(SLEEP_TIME);
-        ViewVersionPage.versionMissingErrorMessage(getDriver(), versionId).click();
-        //WebDriverWait wait = new WebDriverWait(getDriver(), SLEEP_TIME);
-        //wait.until(ExpectedConditions.visibilityOf(ViewVersionPage.versionMissingErrorMessage(getDriver(), versionId)));
+        WebDriverWait wait = new WebDriverWait(getDriver(), SLEEP_TIME);
+        wait.until(ExpectedConditions.visibilityOf(ViewVersionPage.versionMissingErrorMessage(getDriver(), versionId)));
         String actualErrorMessage = ViewVersionPage.versionMissingErrorMessage(getDriver(), versionId).getText();
         assertEquals(actualErrorMessage, expectedErrorMessage);
     }
