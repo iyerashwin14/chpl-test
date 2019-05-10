@@ -28,8 +28,8 @@ public final class ViewVersionPage {
     }
 
     public static WebElement viewSavedVersion(final WebDriver driver, final String versionId) {
-        return driver.findElement(By.xpath("//*[@id=\"chpl-version-" + versionId + "\"]/span/span[2]/h2"));
-    }
+          return driver.findElement(By.xpath("//*[@id=\"chpl-version-" + versionId + "\"]"));
+      }
 
     public static WebElement mergeVersionLink(final WebDriver driver, final String versionId) {
         return driver.findElement(By.xpath("//*[@id=\"version-component-merge-" + versionId + "\"]/i"));
