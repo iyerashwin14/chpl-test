@@ -3,10 +3,13 @@ package gov.healthit.chpl.aqa.asserts;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import cucumber.api.java.en.Then;
+import gov.healthit.chpl.aqa.pageObjects.DpManagementPage;
 import gov.healthit.chpl.aqa.pageObjects.ViewVersionPage;
 import gov.healthit.chpl.aqa.stepDefinitions.Base;
 
@@ -20,8 +23,9 @@ public class ViewVersionPageAsserts extends Base {
      */
     @Then("^I see the version is recorded and updated on View Version page of \"(.*)\"$")
     public void versionIsUpdatedOnViewVersionPage(final String versionId) {
+        getWait().withTimeout(LONG_TIMEOUT, TimeUnit.SECONDS).until(ExpectedConditions.visibilityOf(DpManagementPage.updateSuccessfulToastContainer(getDriver())));
         String actualProductVersion = ViewVersionPage.viewSavedVersion(getDriver(), versionId).getText();
-        assertEquals(actualProductVersion, getCurrentDate());
+        assertTrue(actualProductVersion.contains(getCurrentDate()));
     }
 
     /**
