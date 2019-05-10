@@ -61,10 +61,9 @@ public class ViewDeveloperSteps extends Base {
     /**
      * Clear the email field and enter a value.
      * @param value to be entered
-     * @throws InterruptedException 
      **/
     @And("^I set the email field to \"(.*)\"$")
-    public void setEmailField(final String value) throws InterruptedException {
+    public void setEmailField(final String value)  {
         ViewDeveloperPage.emailField(getDriver()).clear();
         ViewDeveloperPage.emailField(getDriver()).sendKeys(Keys.TAB);
         ViewDeveloperPage.emailField(getDriver()).sendKeys(value);
