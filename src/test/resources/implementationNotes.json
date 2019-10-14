@@ -303,8 +303,16 @@
             "controllerName":"chpl-file-controller",
             "endPointLink":[  
                {  
-                  "implementationNote":"ROLE_ADMIN or ROLE_ONC",
+                  "implementationNote":"Retrieves the current API Documentation file.",
+                  "link":"getApiDocumentationFileUsingGET"
+               },
+               {
+                "implementationNote":"Uploads a new current API Documentation file. Security Restrictions: ROLE_ADMIN or ROLE_ONC",
                   "link":"uploadApiDocumentationUsingPOST"
+               },
+               {
+                "implementationNote":"Retrieves the details about the current API Documentation file.",
+                  "link":"getApiDocumentationFileDetailsUsingGET"
                }
             ]
          },
