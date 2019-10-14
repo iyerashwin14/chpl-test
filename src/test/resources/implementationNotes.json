@@ -245,6 +245,75 @@
                }
             ]
          },
+          {  
+            "controllerName":"surveillance-report-controller",
+            "endPointLink":[  
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN, ROLE_ONC, or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"getAllAnnualReportsUsingGET"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"createAnnualReportUsingPOST"
+               },
+               {  
+                  "implementationNote":"The associated ACB and year of the report cannot be changed. Security Restrictions: ROLE_ADMIN or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"updateAnnualReportUsingPUT"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN, ROLE_ONC, or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"getAnnualReportUsingGET"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"deleteAnnualReportUsingDELETE"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN, ROLE_ONC, or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"exportAnnualReportUsingGET"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN, ROLE_ONC, or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"exportQuarterlyReportUsingGET"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN, ROLE_ONC, or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"getAllQuarterlyReportsUsingGET"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"createQuarterlyReportUsingPOST"
+               },
+               {  
+                  "implementationNote":"The associated ACB, year, and quarter of the report cannot be changed. Security Restrictions: ROLE_ADMIN or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"updateQuarterlyReportUsingPUT"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN, ROLE_ONC, or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"getQuarterlyReportUsingGET"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"deleteQuarterlyReportUsingDELETE"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN, ROLE_ONC, or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"getRelevantComplaintsUsingGET"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN, ROLE_ONC, or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"getRelevantListingsUsingGET"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"updateRelevantListingUsingPUT"
+               },
+               {  
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN or ROLE_ACB and administrative authority on the ACB associated with the report.",
+                  "link":"updatePrivilegedSurveillanceDataUsingPUT"
+               },
+            ]
+         },
          {  
             "controllerName":"surveillance-controller",
             "endPointLink":[  
