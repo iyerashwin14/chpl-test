@@ -184,12 +184,16 @@
             "controllerName":"product-controller",
             "endPointLink":[  
                {  
-                  "implementationNote":" To merge: ROLE_ADMIN or ROLE_ONC. To update: ROLE_ADMIN, ROLE_ONC or ROLE_ACB.",
+                  "implementationNote":"This method serves two purposes: to update a single product's information and to merge two products into one. A user of this service should pass in a single productId to update just that product. If multiple product IDs are passed in, the service performs a merge meaning that a new product is created with all of the information provided and all of the versions previously assigned to the productIds specified are reassigned to the newly created product. The old products are then deleted. Security Restrictions: To merge: ROLE_ADMIN or ROLE_ONC. To update: ROLE_ADMIN, ROLE_ONC or ROLE_ACB.",
                   "link":"updateProductUsingPUT"
                },
                {  
-                  "implementationNote":"ROLE_ADMIN, ROLE_ONC, or ROLE_ACB",
+                  "implementationNote":"Security Restrictions: ROLE_ADMIN, ROLE_ONC, or ROLE_ACB",
                   "link":"splitProductUsingPOST"
+               },
+               {  
+                  "implementationNote":"Either list all products or optionally just all products belonging to a specific developer.",
+                  "link":"getAllProductsUsingGET"
                }
             ]
          },
