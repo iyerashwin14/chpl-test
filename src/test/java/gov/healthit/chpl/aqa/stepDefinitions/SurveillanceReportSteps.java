@@ -126,7 +126,8 @@ public class SurveillanceReportSteps extends Base {
 
     @And("^I click Edit surveillance data button for Surveillance Id \"([^\"]*)\"$")
     public void clickEditSurveillanceDataButton(final String friendlySurvId) {
-        SurveillanceReportPage.editSurveillanceDataButton(getDriver(), friendlySurvId).click();
+        WebElement button =  SurveillanceReportPage.editSurveillanceDataButton(getDriver(), friendlySurvId);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", button);
     }
 
     @And("^I enter surveillance data in fields on form: \"([^\"]*)\" \"([^\"]*)\"$")

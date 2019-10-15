@@ -1,5 +1,7 @@
 package gov.healthit.chpl.aqa.pageObjects;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,8 +40,8 @@ public final class AnnouncementsPage extends BasePage {
         return driver.findElement(By.xpath("//button[@id='announcement-create']"));
     }
 
-    public static WebElement savedAnnouncementInformatoin(final WebDriver driver) {
-        return driver.findElement(By.xpath("//*[@id=\"main-content\"]/div/ui-view/chpl-announcements/div/div"));
+    public static List<WebElement> allAnnouncements(final WebDriver driver) {
+        return driver.findElements(By.xpath("//*[@id=\"main-content\"]/div/ui-view/chpl-announcements/div/div/table/tbody/tr"));
     }
 
     public static WebElement announcementReportDetails(final WebDriver driver) {

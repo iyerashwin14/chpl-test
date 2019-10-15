@@ -86,7 +86,7 @@ public class DpmanagementUploadPageAsserts extends Base {
         SurveillanceManagePage.chplIdTab(getDriver()).click();
         String surveillanceText = SurveillanceManagePage.surveillanceList(getDriver()).getText();
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMM dd" + ", " + "yyyy");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMM d" + ", " + "yyyy");
         LocalDate newDate = LocalDate.now();
 
         assertTrue(surveillanceText.contains("Open Surveillance, Began " + dtf.format(newDate) + ": 1 Open and 2 Closed Non-Conformities Were Found"));

@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -63,15 +65,19 @@ public class AnnouncementsSteps extends Base {
         WebElement link = AnnouncementsPage.saveButton(getDriver());
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView();", link);
         AnnouncementsPage.saveButton(getDriver()).click();
+        this.navigateToAnnouncementsPage();
+        WebDriverWait wait = new WebDriverWait(getDriver(), LONG_TIMEOUT);
+        wait.until(ExpectedConditions.visibilityOfAllElements(AnnouncementsPage.allAnnouncements(getDriver())));
     }
 
     /**
      * Set the Announcement Text field.
      * @param fieldName is the name of the field in the Add Announcements section
+     * @param role is the ROLE of the actor
      **/
-    @And("^I set the \"(.*)\" field to today's date$")
-    public void setAnnouncementTitleField(final String fieldName) {
-        AnnouncementsPage.announcementFieldInput(getDriver(), fieldName).sendKeys(getCurrentDate());
+    @And("^I set the \"(.*)\" field to today's date by \"(.*)\"$")
+    public void setAnnouncementTitleField(final String fieldName, final String role) {
+        AnnouncementsPage.announcementFieldInput(getDriver(), fieldName).sendKeys(getCurrentDate() + "-" + role);
     }
 
     /**
@@ -84,16 +90,16 @@ public class AnnouncementsSteps extends Base {
 
     /**
      * Edit an existing announcement.
+     * @param role the user role
      **/
-    @And("^I edit an existing Announcement$")
-    public void editExistingAnnouncement() {
-        List<WebElement> titleValue = getDriver().findElements(By.xpath("//*[@id=\"main-content\"]/div/ui-view/chpl-announcements/div/div/table/tbody/tr/td[1]"));
-        List<WebElement> allEditButtons = getDriver().findElements(By.xpath("//*[@id=\"main-content\"]/div/ui-view/chpl-announcements/div/div/table/tbody/tr/td[6]/button[1]"));
+    @And("^I edit an existing Announcement by \"(.*)\"$")
+    public void editExistingAnnouncement(final String role) {
+        List<WebElement> allAnnouncements = AnnouncementsPage.allAnnouncements(getDriver());
 
-        for (int i = 0; i < titleValue.size(); i++) {
-
-            if (titleValue.get(i).getText().equals(getCurrentDate())) {
-                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", allEditButtons.get(i));
+        for (WebElement row : allAnnouncements) {
+            if (row.findElement(By.xpath(".//td[1]")).getText().equals(getCurrentDate() + "-" + role)) {
+                WebElement button = row.findElement(By.xpath(".//button[contains(text(), 'Edit')]"));
+                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", button);
                 break;
             }
         }
@@ -108,6 +114,4 @@ public class AnnouncementsSteps extends Base {
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView();", link);
         AnnouncementsPage.deleteAnnouncement(getDriver()).click();
     }
-
 }
-

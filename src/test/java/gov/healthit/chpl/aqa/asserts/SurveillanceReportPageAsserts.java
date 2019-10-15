@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import cucumber.api.java.en.Then;
 import gov.healthit.chpl.aqa.pageObjects.SurveillanceReportPage;
 import gov.healthit.chpl.aqa.stepDefinitions.Base;
+import gov.healthit.chpl.aqa.stepDefinitions.SurveillanceReportSteps;
 
 /**
  * Class SurveillanceReportPageAsserts definition.
@@ -114,10 +115,11 @@ public class SurveillanceReportPageAsserts extends Base {
      */
     @Then("^I see that all entered data was saved for Surveillance Id \"([^\"]*)\"$")
     public void verifyThatSurveillanceDataIsSavedInReport(final String friendlySurvId) {
-
+        SurveillanceReportSteps steps = new SurveillanceReportSteps();
         /* Workaround to resolve Stale Element Reference Exception-
          * reload the element after form update so it's attached to DOM: https://www.seleniumhq.org/exceptions/stale_element_reference.jsp*/
         getDriver().get(getUrl() + "#/surveillance/reporting");
+        steps.iExpandACB("UL LLC");
         SurveillanceReportPage.editSurveillanceReport(getDriver(), "UL LLC-2019-Q1").click();
         WebElement button = SurveillanceReportPage.listingsWithRelevantSurveillanceAccordion(getDriver());
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", button);
